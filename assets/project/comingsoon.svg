@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+<rect width="400" height="300" fill="#0d0d0d"/>
+<circle cx="200" cy="120" r="50" fill="rgba(255,255,255,0.05)"/>
+<g transform="translate(170, 80) scale(5)"><path fill="#666" d="M12 2C7 2 3 6 3 11c0 5 4 9 9 9s9-4 9-9c0-5-4-9-9-9zm0 2l2 6h6l-5 4 2 6-5-4-5 4 2-6-5-4h6l2-6z"/></g>
+<text x="200" y="230" text-anchor="middle" fill="#fff" font-size="22" font-family="Arial" font-weight="bold">Coming Soon</text>
+<text x="200" y="260" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="14" font-family="Arial">Luthf Azizah Almasah</text>
+</svg>

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+<rect width="400" height="300" fill="#2d1a0a"/>
+<circle cx="200" cy="120" r="50" fill="rgba(255,255,255,0.05)"/>
+<g transform="translate(170, 80) scale(5)"><path fill="#4CAF50" d="M12 2C8 2 5 5 5 9c0 5 7 13 7 13s7-8 7-13c0-4-3-7-7-7zm0 3a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4z"/></g>
+<text x="200" y="230" text-anchor="middle" fill="#fff" font-size="22" font-family="Arial" font-weight="bold">Skincare</text>
+<text x="200" y="260" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="14" font-family="Arial">Luthf Azizah Almasah</text>
+</svg>

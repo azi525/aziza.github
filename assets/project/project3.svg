@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+<rect width="400" height="300" fill="#0a1a2d"/>
+<circle cx="200" cy="120" r="50" fill="rgba(255,255,255,0.05)"/>
+<g transform="translate(170, 80) scale(5)"><path fill="#00BCD4" d="M7 2a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h2v2H4a1 1 0 0 0 0 2h5v8a1 1 0 0 0 2 0V4h4a1 1 0 0 0 0-2H7z"/><circle cx="19" cy="14" r="2" fill="#26C6DA"/></g>
+<text x="200" y="230" text-anchor="middle" fill="#fff" font-size="22" font-family="Arial" font-weight="bold">Airbrush</text>
+<text x="200" y="260" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="14" font-family="Arial">Luthf Azizah Almasah</text>
+</svg>
