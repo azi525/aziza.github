@@ -17,59 +17,43 @@ navLink.forEach((link) => {
     });
 });
 
-// Flower decorations — rotating, scroll-follow, bloom/close
-const flowerSVG = (color, center) => `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><g fill="${color}"><circle cx="50" cy="20" r="18"/><circle cx="20" cy="50" r="18"/><circle cx="80" cy="50" r="18"/><circle cx="50" cy="80" r="18"/><circle cx="35" cy="35" r="14"/><circle cx="65" cy="35" r="14"/><circle cx="35" cy="65" r="14"/><circle cx="65" cy="65" r="14"/></g><circle cx="50" cy="50" r="12" fill="${center}"/></svg>`;
+// Sakura rain — bunga sakura turun seperti hujan
+const sakuraSVG = (color) => `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><g fill="${color}"><path d="M50 15 C55 25 65 25 60 40 C70 35 75 45 65 50 C75 55 70 65 60 60 C65 75 55 75 50 65 C45 75 35 75 40 60 C30 65 25 55 35 50 C25 45 30 35 40 40 C35 25 45 25 50 15 Z"/><path d="M50 15 C55 25 65 25 60 40 C70 35 75 45 65 50 C75 55 70 65 60 60 C65 75 55 75 50 65 C45 75 35 75 40 60 C30 65 25 55 35 50 C25 45 30 35 40 40 C35 25 45 25 50 15 Z" transform="rotate(72 50 50)"/><path d="M50 15 C55 25 65 25 60 40 C70 35 75 45 65 50 C75 55 70 65 60 60 C65 75 55 75 50 65 C45 75 35 75 40 60 C30 65 25 55 35 50 C25 45 30 35 40 40 C35 25 45 25 50 15 Z" transform="rotate(144 50 50)"/><path d="M50 15 C55 25 65 25 60 40 C70 35 75 45 65 50 C75 55 70 65 60 60 C65 75 55 75 50 65 C45 75 35 75 40 60 C30 65 25 55 35 50 C25 45 30 35 40 40 C35 25 45 25 50 15 Z" transform="rotate(216 50 50)"/><path d="M50 15 C55 25 65 25 60 40 C70 35 75 45 65 50 C75 55 70 65 60 60 C65 75 55 75 50 65 C45 75 35 75 40 60 C30 65 25 55 35 50 C25 45 30 35 40 40 C35 25 45 25 50 15 Z" transform="rotate(288 50 50)"/></g><circle cx="50" cy="50" r="5" fill="#FFD700" opacity="0.8"/></svg>`;
 
-const flowerData = [
-    { left: "5%", top: "15%", size: 80, color: "#fff", center: "#FFD700", delay: 0 },
-    { left: "12%", top: "60%", size: 60, color: "#FFD700", center: "#fff", delay: 0.3 },
-    { left: "3%", top: "40%", size: 50, color: "#fff", center: "#FF69B4", delay: 0.6 },
-    { left: "88%", top: "20%", size: 70, color: "#FFD700", center: "#fff", delay: 0.2 },
-    { left: "92%", top: "55%", size: 90, color: "#fff", center: "#FFD700", delay: 0.5 },
-    { left: "85%", top: "75%", size: 55, color: "#FF69B4", center: "#FFD700", delay: 0.8 },
-    { left: "8%", top: "85%", size: 65, color: "#FFD700", center: "#fff", delay: 0.4 },
-    { left: "90%", top: "35%", size: 45, color: "#fff", center: "#FFD700", delay: 0.7 },
+const sakuraColors = [
+    "#FFB7C5",
+    "#FFC8DD",
+    "#FFDDE1",
+    "#FF9EB5",
+    "#FFAEC0",
 ];
 
-const flowers = [];
-
-flowerData.forEach((d, i) => {
+function spawnFlower() {
     const el = document.createElement("div");
-    el.className = "flower-deco bloom";
-    if (i % 2 === 1) el.classList.add("reverse");
-    el.style.left = d.left;
-    el.style.top = d.top;
-    el.style.width = d.size + "px";
-    el.style.height = d.size + "px";
-    el.style.animationDelay = d.delay + "s";
-    el.innerHTML = flowerSVG(d.color, d.center);
-    el.querySelector("svg").style.animationDelay = (d.delay * 2) + "s";
+    el.className = "flower-rain";
+    const size = 20 + Math.random() * 40;
+    const left = Math.random() * 100;
+    const duration = 5 + Math.random() * 5;
+
+    el.style.left = left + "%";
+    el.style.width = size + "px";
+    el.style.height = size + "px";
+    el.style.animationDuration = duration + "s";
+    const color = sakuraColors[Math.floor(Math.random() * sakuraColors.length)];
+    el.innerHTML = sakuraSVG(color);
+    el.querySelector("svg").style.animationDuration = (2 + Math.random() * 4) + "s";
+
     document.body.appendChild(el);
-    flowers.push({ el, baseTop: parseFloat(d.top) });
-});
+    setTimeout(() => el.remove(), duration * 1000);
+}
 
-// Scroll follow — flowers move with scroll position
-let lastScroll = 0;
-window.addEventListener("scroll", () => {
-    const scrollY = window.scrollY;
-    const dir = scrollY > lastScroll ? 1 : -1;
-    lastScroll = scrollY;
+// Spawn flower setiap 1.5s
+setInterval(spawnFlower, 1500);
 
-    flowers.forEach((f, i) => {
-        const offset = (scrollY * 0.15 * (i % 2 === 0 ? 1 : -1));
-        f.el.style.transform = `translateY(${offset}px)`;
-
-        // Close animation when scrolling fast down, bloom when scrolling up
-        if (dir > 0 && scrollY > 200 && !f.el.classList.contains("close")) {
-            f.el.classList.remove("bloom");
-            f.el.classList.add("close");
-            setTimeout(() => {
-                f.el.classList.remove("close");
-                f.el.classList.add("bloom");
-            }, 2000 + i * 200);
-        }
-    });
-});
+// Initial burst
+for (let i = 0; i < 3; i++) {
+    setTimeout(spawnFlower, i * 500);
+}
 
 // Skill box explode + particle burst on click
 const skillBoxes = document.querySelectorAll(".skill-box");

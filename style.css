@@ -21,51 +21,37 @@
     }
 
     body {
-    background-color: #E91E63;
+    background-color: #000;
     color: #fff;
     position: relative;
     overflow-x: hidden;
     }
 
-    .flower-deco {
-    position: absolute;
+    .flower-rain {
+    position: fixed;
+    top: -50px;
     pointer-events: none;
     z-index: 0;
+    animation: flowerRain linear infinite;
     will-change: transform;
     }
 
-    .flower-deco svg {
+    .flower-rain svg {
     width: 100%;
     height: 100%;
-    animation: flowerSpin 8s linear infinite;
+    animation: flowerSpin 4s linear infinite;
     }
 
-    .flower-deco.reverse svg {
-    animation: flowerSpin 10s linear infinite reverse;
+    @keyframes flowerRain {
+    0% { transform: translateY(0) translateX(0); opacity: 0; }
+    10% { opacity: 0.8; }
+    90% { opacity: 0.8; }
+    100% { transform: translateY(105vh) translateX(50px); opacity: 0; }
     }
 
     @keyframes flowerSpin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
-    }
-
-    @keyframes flowerBloom {
-    0% { transform: scale(0) rotate(-180deg); opacity: 0; }
-    60% { transform: scale(1.2) rotate(10deg); opacity: 1; }
-    100% { transform: scale(1) rotate(0deg); opacity: 1; }
-    }
-
-    .flower-deco.bloom {
-    animation: flowerBloom 1.2s ease-out forwards;
-    }
-
-    @keyframes flowerClose {
-    0% { transform: scale(1) rotate(0deg); opacity: 1; }
-    100% { transform: scale(0) rotate(180deg); opacity: 0; }
-    }
-
-    .flower-deco.close {
-    animation: flowerClose 0.8s ease-in forwards;
     }
 
     header,
@@ -208,15 +194,16 @@
 
     .hero .container .content svg {
     margin-bottom: -5rem;
-    width: 80%;
+    width: 100%;
     max-width: 100%;
     height: auto;
+    overflow: visible;
     }
 
     .hero .container .content svg text {
     text-transform: uppercase;
     font-weight: bold;
-    font-size: clamp(40px, 12vw, 120px);
+    font-size: clamp(100px, 30vw, 300px);
     animation: stroke 5s infinite alternate;
     }
 
