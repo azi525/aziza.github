@@ -22,43 +22,61 @@
 
     body {
     background-color: #E91E63;
-    background-image:
-        radial-gradient(circle at 20% 30%, rgba(255, 105, 180, 0.6) 0%, transparent 50%),
-        radial-gradient(circle at 80% 70%, rgba(255, 20, 147, 0.5) 0%, transparent 50%),
-        radial-gradient(circle at 50% 50%, rgba(255, 192, 203, 0.4) 0%, transparent 70%);
     color: #fff;
     position: relative;
     overflow-x: hidden;
     }
 
-    body::before,
-    body::after {
-    content: "";
-    position: fixed;
-    top: 0;
-    width: 100%;
-    height: 100vh;
+    .flower-deco {
+    position: absolute;
     pointer-events: none;
-    z-index: 999;
-    opacity: 0.15;
-    background-repeat: repeat;
-    background-size: 120px;
+    z-index: 0;
+    will-change: transform;
     }
 
-    body::before {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cg fill='%23fff'%3E%3Ccircle cx='50' cy='30' r='15'/%3E%3Ccircle cx='30' cy='50' r='15'/%3E%3Ccircle cx='70' cy='50' r='15'/%3E%3Ccircle cx='50' cy='70' r='15'/%3E%3Ccircle cx='50' cy='50' r='10' fill='%23FFD700'/%3E%3C/g%3E%3C/svg%3E");
-    animation: flowerFloat 20s linear infinite;
+    .flower-deco svg {
+    width: 100%;
+    height: 100%;
+    animation: flowerSpin 8s linear infinite;
     }
 
-    body::after {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cg fill='%23FFD700'%3E%3Ccircle cx='50' cy='30' r='12'/%3E%3Ccircle cx='30' cy='50' r='12'/%3E%3Ccircle cx='70' cy='50' r='12'/%3E%3Ccircle cx='50' cy='70' r='12'/%3E%3Ccircle cx='50' cy='50' r='8' fill='%23fff'/%3E%3C/g%3E%3C/svg%3E");
-    animation: flowerFloat 25s linear infinite reverse;
-    background-position: 60px 60px;
+    .flower-deco.reverse svg {
+    animation: flowerSpin 10s linear infinite reverse;
     }
 
-    @keyframes flowerFloat {
-    0% { background-position: 0 0; }
-    100% { background-position: 120px 240px; }
+    @keyframes flowerSpin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+    }
+
+    @keyframes flowerBloom {
+    0% { transform: scale(0) rotate(-180deg); opacity: 0; }
+    60% { transform: scale(1.2) rotate(10deg); opacity: 1; }
+    100% { transform: scale(1) rotate(0deg); opacity: 1; }
+    }
+
+    .flower-deco.bloom {
+    animation: flowerBloom 1.2s ease-out forwards;
+    }
+
+    @keyframes flowerClose {
+    0% { transform: scale(1) rotate(0deg); opacity: 1; }
+    100% { transform: scale(0) rotate(180deg); opacity: 0; }
+    }
+
+    .flower-deco.close {
+    animation: flowerClose 0.8s ease-in forwards;
+    }
+
+    header,
+    .hero,
+    .about,
+    .skill,
+    .project,
+    .contact,
+    footer {
+    position: relative;
+    z-index: 1;
     }
 
     .container {
