@@ -662,9 +662,30 @@
         background: #25D366;
     }
 
+    .social-media {
+        opacity: 0;
+        transform: scale(0) rotate(-180deg);
+        animation: socialBloom 1.5s ease-out forwards;
+    }
+
+    .contact .social-media-container .social-media:nth-child(1) { animation-delay: 0.3s; }
+    .contact .social-media-container .social-media:nth-child(2) { animation-delay: 0.6s; }
+    .contact .social-media-container .social-media:nth-child(3) { animation-delay: 0.9s; }
+
+    footer .social-media-container .social-media:nth-child(1) { animation-delay: 0.5s; }
+    footer .social-media-container .social-media:nth-child(2) { animation-delay: 0.7s; }
+    footer .social-media-container .social-media:nth-child(3) { animation-delay: 0.9s; }
+
+    @keyframes socialBloom {
+        0% { opacity: 0; transform: scale(0) rotate(-180deg); }
+        60% { opacity: 1; transform: scale(1.2) rotate(10deg); }
+        100% { opacity: 1; transform: scale(1) rotate(0deg); }
+    }
+
     .social-media:hover {
         transform: scale(1.15);
         box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+        transition: transform 0.5s ease, box-shadow 0.5s ease;
     }
 
     .contact .container .social-media-container .social-media:hover {
