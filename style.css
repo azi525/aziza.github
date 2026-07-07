@@ -203,7 +203,7 @@
     .hero .container .content svg text {
     text-transform: uppercase;
     font-weight: bold;
-    font-size: clamp(110px, 35vw, 350px);
+    font-size: clamp(120px, 40vw, 400px);
     animation: stroke 5s infinite alternate;
     }
 
