@@ -203,7 +203,7 @@
     .hero .container .content svg text {
     text-transform: uppercase;
     font-weight: bold;
-    font-size: clamp(100px, 30vw, 300px);
+    font-size: clamp(100px, 30vw, 340px);
     animation: stroke 5s infinite alternate;
     }
 
@@ -962,7 +962,7 @@
 
     .hero .container .content svg {
         margin-bottom: -2rem;
-        width: 90%;
+        width: 100%;
     }
 
     .hero .container .content button {
